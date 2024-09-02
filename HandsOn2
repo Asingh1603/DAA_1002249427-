@@ -1,0 +1,58 @@
+#HandsOn2
+
+def main():
+    # to get array input from user
+    while True: #creates an infinite loop because True is always true. 
+        try: #to tackle invalid input array
+            array_input = input("\b\b\bEnter numbers: ")
+            array = list(map(int, array_input.split()))
+            #converts the array into a list of integers
+            if not array: #check for empty array
+                print("The array cannot be empty. Please enter at least one number.")
+            else:
+                break
+        except ValueError: #check for invalid array
+            print("Invalid input. Please enter only numbers separated by spaces.")
+
+    print(" \n\b\b\bOriginal array: ", array , "\n")
+
+    # Insertion Sort
+    insertion_sort = array.copy() #creating a copy to manipulate
+    for i in range(1, len(insertion_sort)): 
+        key = insertion_sort[i]
+        j = i - 1
+        while j >= 0 and insertion_sort[j] > key: #move elements greater then key into position ahead
+            insertion_sort[j + 1] = insertion_sort[j]
+            j -= 1
+        insertion_sort[j + 1] = key #placing key
+
+    # Selection Sort
+    selection_sort = array.copy() #creating a copy to manipulate
+    for i in range(len(selection_sort)):
+        min_index = i #index of min element in unsorted array
+        for j in range(i + 1, len(selection_sort)):
+            if selection_sort[j] < selection_sort[min_index]:
+                min_index = j
+        #sorting min element and the first element
+        selection_sort[i], selection_sort[min_index] = selection_sort[min_index], selection_sort[i]
+
+    # Bubble Sort
+    bubble_sort = array.copy() #creating a copy to manipulate
+    n = len(bubble_sort)
+    for i in range(n):
+        swapped = False #to check if any swap happenend
+        for j in range(0, n - i - 1):
+            #swap if order is wrong
+            if bubble_sort[j] > bubble_sort[j + 1]:
+                bubble_sort[j], bubble_sort[j + 1] = bubble_sort[j + 1], bubble_sort[j]
+                swapped = True
+        if not swapped: #if no element swapped, then array sorted
+            break
+
+    # Print results
+    print(" \b\bInsertion Sort:", insertion_sort, "\n")
+    print(" \b\bSelection Sort:", selection_sort, "\n")
+    print(" \b\bBubble Sort:", bubble_sort, "\n")
+
+# to call the main function
+main()
