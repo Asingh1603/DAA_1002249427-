@@ -9,7 +9,7 @@ def bubble_sort(arr):
     n = len(arr)
     for i in range(n):
         for j in range(0, n - i - 1):
-            if arr[j] > arr[j + 1]:  # Corrected this line
+            if arr[j] > arr[j + 1]:  
                 arr[j], arr[j + 1] = arr[j + 1], arr[j]
     return arr
 
@@ -60,7 +60,7 @@ def benchmark_sorting_algorithms():
     results = {alg: [] for alg in algorithms}
 
     for size in input_sizes:
-        arr = random.sample(range(size * 10), size)  # Generate a random array of the given size
+        arr = random.sample(range(size * 10), size)  
         for name, algorithm in algorithms.items():
             start_time = time.time()
             algorithm(arr.copy())  # Run the algorithm
