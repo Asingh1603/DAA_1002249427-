@@ -1,0 +1,22 @@
+def eliminate_duplicates(array):
+    if len(array) == 0:
+        return []
+
+  unique_position = 1 #start from the second element
+  for i in range(1, len(array)):
+      if array[i]! = array[i-1]:
+          array[unique_position] = array[i]
+          unique_position += 1
+
+
+#return only the  unique portion of the array
+  return array[:unique_position]
+
+if __name__ == "__main__"
+    arr1 = [2, 2, 2, 2, 2]
+    unique_arr1 = eliminate_duplicates(arr1)
+    print("Array after removing duplicates (case 1):", unique_arr1)
+
+    arr2 = [1, 2, 2, 3, 4, 4, 4, 5, 5]
+    unique_arr1 = eliminate_duplicates(arr1)
+    print("Array after removing duplicates (case 2):", unique_arr2)
