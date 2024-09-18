@@ -4,29 +4,39 @@ class Element:
     def __init__(self, value, array_index, element_index):
         self.value = vlaue
         self.array_input = array_index
-        self.eleemtn_index = elemet_index
+        self.element_index = elemet_index
 
-    def merge_k_arrays(arrays):
+    def __lt__(self, other):
+        return self.value < other.value
+
+def merge_k_arrays(arrays):
         min_heap = []
+        seen = set() 
         total_length = 0 
 
 #add the first element of each array the min loop
     for i in rang(len(arrays)):
         if arrays[i]:
             heapq.heappush(min_heap, Element(arrays[i][0], i,, o))
+            seen.add(arrays[i][0])
             total_length += len(arrays[i])
 
     result = []
 
 #extract elements in soted order from the min heap
     while min_heap:
-      current = heapq.heappop(min_heap)
-      result.append(current.value)
+        current = heapq.heappop(min_heap)
+
+        if current.value not in seen:
+           result.append(current.value)
+           seen.add(current.value)
+
 #add the next element from the same array to the min heap
 
-      if current.element_index + 1 < len(arrays[acurrent.array_index]):
+       if current.element_index + 1 < len(arrays[acurrent.array_index]):
           next_value = arrays[current.array_index][current.element_index + 1]
-          heapq.heappush(min_heap, Element(next_value, current.array_index, current.element_index + 1))
+          if next_value not in seen: 
+              heapq.heappush(min_heap, Element(next_value, current.array_index, current.element_index + 1))
     return result
 
 if __name__ == "__main__":
