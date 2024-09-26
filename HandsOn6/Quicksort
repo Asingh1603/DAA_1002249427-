@@ -4,7 +4,7 @@ import random
 def quicksort_non_random(arr):
     if len(arr) <= 1:
         return  arr
-    pivot = arr[0] 
+    pivot = arr[0]
     less = [x for x in arr[1:] if x <= pivot]
     greater = [x for x in arr[1:] if x > pivot]
     return quicksort_non_random(less) + [pivot] + quicksort_non_random(greater)
