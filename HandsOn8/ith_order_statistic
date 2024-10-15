@@ -22,10 +22,10 @@ def quickselect(arr, low, high, i):
 
 def ith_order_statistic(arr, i):
     if i < 0 or i >= len(arr):
-        raise valueError ("Index out of bounds")
+        raise ValueError ("Index out of bounds")
     return quickselect(arr, 0, len(arr) - 1, i)
 
 arr = [7, 10, 4, 3, 20, 15]
-i = 3
+i = 2
 result = ith_order_statistic(arr, i)
 print(f"The {i}-th order statistic is: {result}")
